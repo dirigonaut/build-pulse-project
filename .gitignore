@@ -1,0 +1,7 @@
+/build-pulse-project/lib
+/build-pulse-project/bin
+/build-pulse-project/include
+/build-pulse-project/local
+/build-pulse-project/pip-selfcheck.json
+*.pyc
+*.egg-info
