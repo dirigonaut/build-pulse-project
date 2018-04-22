@@ -1,7 +1,7 @@
 import os
 import json
 import sqlite3
-from schema import Schema, And, Use, Optional
+from jsonschema import validate
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
@@ -16,21 +16,22 @@ app.config.update(dict(
     PASSWORD='default'
 ))
 
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-
-schema = Schema([  {
-    "_id": "59d2698c86ab54cee8acdc7b",
-    "make": "Mercedes",
-    "year": 2013,
-    "color": "Gray",
-    "price": 15669,
-    "hasSunroof": false,
-    "isFourWheelDrive": false,
-    "hasLowMiles": true,
-    "hasPowerWindows": false,
-    "hasNavigation": false,
-    "hasHeatedSeats": false
-  }])
+schema = {
+    "properties" : {
+        "make": { "type": "string" },
+        "year": { "type": "number" },
+        "color": { "type": "string" },
+        "price": { "type": "number" },
+        "hasSunroof": { "type": "string" },
+        "isFourWheelDrive": { "type": "string" },
+        "hasLowMiles": { "type": "string" },
+        "hasPowerWindows": { "type": "string" },
+        "hasNavigation": { "type": "string" },
+        "hasHeatedSeats": { "type": "string" },
+        "operation": { "type": "string" },
+    },
+    "required": ["operation"]
+}
 
 @app.route('/', methods=['GET'])
 def get_all_stock():
@@ -42,6 +43,8 @@ def get_all_stock():
 def get_stock():
     db = get_db();
     entries = request.json
+
+    validate(entries, schema)
 
     criteria = '';
     operator = entries.pop('operator')
