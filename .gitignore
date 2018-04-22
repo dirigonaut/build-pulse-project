@@ -5,3 +5,5 @@
 /build-pulse-project/pip-selfcheck.json
 *.pyc
 *.egg-info
+*.db
+/venv/*
