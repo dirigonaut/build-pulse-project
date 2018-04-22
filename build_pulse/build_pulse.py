@@ -30,7 +30,7 @@ schema = {
         "hasHeatedSeats": { "type": "string" },
         "operation": { "type": "string" },
     },
-    "required": ["operation"]
+    "required": ["operator"]
 }
 
 @app.route('/', methods=['GET'])

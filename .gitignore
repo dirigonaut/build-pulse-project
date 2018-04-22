@@ -1,9 +1,9 @@
-/build-pulse-project/lib
-/build-pulse-project/bin
-/build-pulse-project/include
-/build-pulse-project/local
-/build-pulse-project/pip-selfcheck.json
+/build_pulse/lib
+/build_pulse/bin
+/build_pulse/include
+/build_pulse/local
+/build_pulse/pip-selfcheck.json
 *.pyc
 *.egg-info
 *.db
-/venv/*
+build_pulse/pip-selfcheck.json

@@ -1,1 +1,1 @@
-from .build_pulse.py import app
+from build_pulse import app
