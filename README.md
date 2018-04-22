@@ -1,14 +1,14 @@
 # build-pulse-project
 
 #Project Details
-  Domain: Car Dealership
-  Interface: Web API
+  -Domain: Car Dealership
+  -Interface: Web API
 
 #Install
 Requirements:
-  python 2.7
-  pip
-  virtualenv
+  -python 2.7
+  -pip
+  -virtualenv
 
 cd into project_folder
 
@@ -36,6 +36,7 @@ pytest
 Get '/' returns all cars in stock
 Post '/' takes a json object with the following properties
 The one required field operator takes a value 'AND' or 'OR'
+```
 {
     "properties" : {
         "make": { "type": "string" },
@@ -52,3 +53,4 @@ The one required field operator takes a value 'AND' or 'OR'
     },
     "required": ["operator"]
 }
+```
