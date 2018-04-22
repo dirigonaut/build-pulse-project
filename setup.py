@@ -8,4 +8,10 @@ setup(
         'flask',
         'jsonschema'
     ],
+    setup_requires=[
+        'pytest-runner',
+    ],
+    tests_require=[
+        'pytest',
+    ],
 )
