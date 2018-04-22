@@ -46,7 +46,12 @@ def get_stock():
 
     for key, value in entries.items():
         if len(criteria) > 0:
-            criteria += ' ' + operator + ' '
+            if operator.lower() == 'and':
+                criteria += ' AND '
+            elif operator.lower() == 'or':
+                criteria += ' OR '
+            else:
+                abort(400, 'operator is not a valid value')
 
         if value == 'true':
             value = '1'
