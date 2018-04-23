@@ -9,6 +9,7 @@ from db import get_db
 bp = Blueprint('api', __name__)
 
 schema = {
+    "type" : "object",
     "properties" : {
         "make": { "type": "string" },
         "year": { "type": "number" },
@@ -46,6 +47,7 @@ def get_stock():
 
     for key, value in entries.items():
         if len(criteria) > 0:
+            #handle appending operator
             if operator.lower() == 'and':
                 criteria += ' AND '
             elif operator.lower() == 'or':
@@ -53,6 +55,7 @@ def get_stock():
             else:
                 abort(400, 'operator is not a valid value')
 
+        #Convert boolean to 0 or 1 for sql
         if value == 'true':
             value = '1'
         elif value == 'false':
