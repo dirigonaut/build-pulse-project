@@ -10,3 +10,4 @@ build_pulse/pip-selfcheck.json
 .eggs
 .pytest_cache/
 /tests/__pycache__/*
+.cache/
