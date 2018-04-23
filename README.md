@@ -33,6 +33,7 @@ pytest
 ```
 
 #Endpoints
+- localhost:5000
 - Get '/' returns all cars in stock
 - Post '/' takes a json object with the following properties
 The one required field operator takes a value 'AND' or 'OR'
