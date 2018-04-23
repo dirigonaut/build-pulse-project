@@ -26,6 +26,10 @@ schema = {
     "required": ["operator"]
 }
 
+columns = [ "_id", "make", "year", "color", "price",
+  "hasSunroof", "isFourWheelDrive", "hasLowMiles",
+  "hasPowerWindows", "hasNavigation", "hasHeatedSeats"]
+
 @bp.route('/', methods=['GET'])
 def get_all_stock():
     db = get_db();
@@ -40,31 +44,35 @@ def get_stock():
     try:
         validate(entries, schema)
     except:
-        abort(400, 'Missing required fields')
+        abort(400, 'Failed validation.')
 
     criteria = '';
     operator = entries.pop('operator')
 
     for key, value in entries.items():
-        if len(criteria) > 0:
-            #handle appending operator
-            if operator.lower() == 'and':
-                criteria += ' AND '
-            elif operator.lower() == 'or':
-                criteria += ' OR '
-            else:
-                abort(400, 'operator is not a valid value')
+        if key in columns:
+            if len(criteria) > 0:
+                #handle appending operator
+                if operator.lower() == 'and':
+                    criteria += ' AND '
+                elif operator.lower() == 'or':
+                    criteria += ' OR '
+                else:
+                    abort(400, 'operator is not a valid value')
 
-        #Convert boolean to 0 or 1 for sql
-        if value == 'true':
-            value = '1'
-        elif value == 'false':
-            value = '0'
+            #Convert boolean to 0 or 1 for sql
+            if value == 'true':
+                value = '1'
+            elif value == 'false':
+                value = '0'
 
-        criteria += key + ' = ' + '"' + value + '"'
+            criteria += key + ' = ' + '"' + value + '"'
+        else:
+            abort(400, 'The data is badly formed')
 
     query = "select * from cars where " + criteria + ";"
 
+    print query
     try:
         values = db.execute("select * from cars where " + criteria).fetchall()
         return json.dumps( [dict(i) for i in values] )
