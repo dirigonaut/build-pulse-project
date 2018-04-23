@@ -12,8 +12,6 @@ Requirements:
     - ubuntu: ```sudo apt-get isntall python-pip```
   - virtualenv
     - ubuntu: ```pip install virtualenv```
-  - python-test
-    - ubuntu: ```sudo apt-get install python-pytest```
 
 cd into project_folder
 
