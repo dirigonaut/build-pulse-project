@@ -1,8 +1,16 @@
+attrs==17.4.0
+-e git+https://github.com/dirigonaut/build-pulse-project.git@7cc3a0e69c0fa54745db27791062acf4e02f137a#egg=build_pulse
 click==6.7
 Flask==0.12.2
+funcsigs==1.0.2
 functools32==3.2.3.post2
 itsdangerous==0.24
 Jinja2==2.10
 jsonschema==2.6.0
 MarkupSafe==1.0
+more-itertools==4.1.0
+pluggy==0.6.0
+py==1.5.3
+pytest==3.5.0
+six==1.11.0
 Werkzeug==0.14.1
