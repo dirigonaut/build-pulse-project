@@ -15,6 +15,7 @@ Requirements:
 
 cd into project_folder
 
+Run commands below in order inside the base project folder
 ```
 export FLASK_APP=build_pulse
 export FLASK_DEBUG=true
