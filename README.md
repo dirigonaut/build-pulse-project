@@ -9,7 +9,11 @@
 Requirements:
   - python 2.7
   - pip
+    - ubuntu: ```sudo apt-get isntall python-pip```
   - virtualenv
+    - ubuntu: ```pip install virtualenv```
+  - python-test
+    - ubuntu: ```sudo apt-get install python-pytest```
 
 cd into project_folder
 
@@ -19,7 +23,7 @@ export FLASK_DEBUG=true
 virtualenv build_pulse
 source build_pulse/bin/activate
 pip install --editable .
-flask initdb
+flask init-db
 ```
 
 #Run
@@ -29,7 +33,7 @@ flask run
 
 #Test
 ```
-pytest
+python setup.py test
 ```
 
 #Endpoints
